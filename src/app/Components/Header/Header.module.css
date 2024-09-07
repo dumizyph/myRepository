@@ -1,0 +1,173 @@
+/* General Header Styles */
+.header {
+  position: relative;
+  z-index: 1;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #a3cb38, #2c3a47, white);
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo a img {
+  font-size: 24px;
+  height: auto;
+  width: 250px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Navbar Styles */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #a3cb38, #2c3a47, white);
+  transition: width 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #a3cb38; /* Hover color to green */
+}
+
+.nav ul li a:hover::after {
+  width: 100%; /* Expands the gradient underline on hover */
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Burger animation */
+.burger span.open:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.burger span.open:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Drawer Styles */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+  padding-top: 60px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.drawerOpen {
+  right: 0;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.drawerHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.closeButton {
+  font-size: 28px;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.drawer ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.drawer ul li {
+  margin: 20px;
+}
+
+.drawer ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
