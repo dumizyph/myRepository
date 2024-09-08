@@ -1,5 +1,7 @@
 import header from "./Header";
+import CustomDrawer from "./CustomDrawer";
 const Header={
-     header
+     header,
+     CustomDrawer
 }
 export default Header;

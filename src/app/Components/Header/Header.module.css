@@ -31,8 +31,8 @@
 }
 
 .logo a img {
-  height: auto;
-  width: 250px;
+  height: 38px;
+  width: auto;
   color: white;
   font-weight: 600;
   text-decoration: none;
@@ -158,6 +158,11 @@
   color: #333;
   text-decoration: none;
   font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.drawer ul li a:hover {
+  color: #a3cb38;
 }
 
 /* Responsive Design */
@@ -187,4 +192,14 @@
   .drawer {
     padding-top: 40px;
   }
+}
+
+/* Optional Transitions for smoother drawer open/close animation */
+.drawer {
+  right: -100%;
+  transition: right 0.3s ease-in-out;
+}
+
+.drawerOpen {
+  right: 0;
 }

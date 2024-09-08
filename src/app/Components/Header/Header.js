@@ -1,21 +1,30 @@
 "use client";
 import { useState } from 'react';
+import { IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu'; // MUI burger icon
 import styles from './Header.module.css';
+import CustomDrawer from './CustomDrawer'; // Import the drawer component
+import Components from '..';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
+  const toggleDrawer = (open) => () => {
+    setIsDrawerOpen(open);
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+        {/* Logo */}
         <div className={styles.logo}>
-          <a href="/"><img  src='/images/zyfhalon-removebg-preview.png'/></a>
+          <a href="/">
+            <img src='/images/zyfhalon-removebg-preview.png' alt="Logo" />
+          </a>
         </div>
-        <nav className={`${styles.nav} ${isDrawerOpen ? styles.drawerOpen : ''}`}>
+
+        {/* Normal Nav for larger screens */}
+        <nav className={styles.nav}>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -23,25 +32,14 @@ export default function Header() {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <div className={styles.burger} onClick={toggleDrawer}>
-          <span className={`${isDrawerOpen ? styles.open : ''}`}></span>
-          <span className={`${isDrawerOpen ? styles.open : ''}`}></span>
-          <span className={`${isDrawerOpen ? styles.open : ''}`}></span>
-        </div>
-      </div>
 
-      {/* Fullscreen Drawer for small screens */}
-      <div className={`${styles.drawer} ${isDrawerOpen ? styles.drawerOpen : ''}`}>
-        <div className={styles.drawerHeader}>
-          <h2><img  src='/images/zyfhalon-removebg-preview.png'/></h2>
-          <button className={styles.closeButton} onClick={toggleDrawer}>&times;</button>
-        </div>
-        <ul>
-          <li><a href="#home" onClick={toggleDrawer}>Home</a></li>
-          <li><a href="#about" onClick={toggleDrawer}>About</a></li>
-          <li><a href="#services" onClick={toggleDrawer}>Services</a></li>
-          <li><a href="#contact" onClick={toggleDrawer}>Contact</a></li>
-        </ul>
+        {/* MUI Burger Icon for small screens */}
+        <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)} className={styles.burger}>
+          <MenuIcon style={{ color: 'white' }} />
+        </IconButton>
+
+        {/* Custom Drawer Component */}
+        <Components.Header.CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       </div>
     </header>
   );

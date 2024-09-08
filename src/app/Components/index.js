@@ -1,7 +1,8 @@
-import { Component } from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 const Components={
-     Header
+     Header,
+     Footer
 }
 
 export default Components

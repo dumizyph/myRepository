@@ -1,0 +1,89 @@
+/* Drawer Header Styles */
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgb(8, 4, 4); /* Slightly transparent background */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo a img {
+  height: 38px;
+  width: auto;
+}
+
+.closeButton {
+  color: #333;
+  font-size: 30px;
+}
+
+/* Increase Drawer Width */
+.MuiDrawer-paper {
+  width: 400px; /* Increased drawer width */
+  max-width: 80%; /* Makes sure it's responsive on smaller screens */
+}
+
+/* Drawer List Styling */
+.drawerList {
+  padding-top: 20px;
+}
+
+.drawerItem {
+  position: relative;
+  padding: 20px;
+  color: #333; /* Default text color */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  background-color: transparent; /* Default background */
+  overflow: hidden; /* To ensure underline doesn't overflow */
+}
+
+/* Add underline effect */
+.drawerItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #a3cb38; /* Green underline color */
+  transition: width 0.3s ease;
+}
+
+.drawerItem:hover::after {
+  width: 100%; /* Expands the underline on hover */
+}
+
+.drawerItem:hover {
+  color: #a3cb38; /* Text hover color */
+  background-color: rgba(163, 203, 56, 0.1); /* Light green background on hover */
+}
+
+/* Drawer List Item Text */
+.drawerItem .MuiListItemText-root {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+/* Responsive Design for Drawer */
+@media (max-width: 768px) {
+  .drawerItem {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawerHeader {
+    padding: 10px;
+  }
+
+  .logo a img {
+    height: 40px;
+  }
+
+  .drawerItem {
+    font-size: 14px;
+    padding: 15px;
+  }
+}

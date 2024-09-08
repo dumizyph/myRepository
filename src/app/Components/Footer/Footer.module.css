@@ -1,0 +1,126 @@
+/* Footer styles */
+.footer {
+  background-color: #062D43;
+  color: white;
+  padding: 40px 0;
+  text-align: left;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerLogo img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.footerAddress {
+  margin-bottom: 10px;
+}
+
+.footerLink {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block; /* Restrict width to the text */
+  margin-bottom: 10px;
+  padding-bottom: 2px;
+}
+
+.footerLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #a3cb38;
+  transition: width 0.3s ease;
+  z-index: 1; /* Make sure it stays above any background */
+}
+
+.footerLink:hover::after {
+  width: 100%; /* Expands the underline on hover */
+}
+
+.footerLink:hover {
+  color: #a3cb38; /* Changes text color on hover */
+}
+
+/* Footer Social Icons */
+.footerSocials {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.footerIcon {
+  color: white;
+}
+
+.footerIcon:hover {
+  color: #a3cb38;
+}
+
+/* Footer Title */
+.footerTitle {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Footer Links Column */
+.footerLinksColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subscribe Section */
+.footerSubscribeText {
+  margin-bottom: 10px;
+}
+
+.footerSubscribeForm {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerInput .MuiOutlinedInput-root {
+  color: white;
+}
+
+.footerInput .MuiOutlinedInput-root fieldset {
+  border-color: white;
+}
+
+.footerInput .MuiOutlinedInput-root:hover fieldset {
+  border-color: #a3cb38;
+}
+
+.footerButton {
+  background-color: #a3cb38;
+}
+
+.footerButton:hover {
+  background-color: #81b532;
+}
+
+/* Footer Bottom */
+.footerBottom {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footerTerms {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footerCopyright {
+  color: rgba(255, 255, 255, 0.7);
+}

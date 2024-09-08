@@ -8,7 +8,9 @@ export default function Home() {
   const videoRef = useRef(null);
 
   return (
+
     <main className="main">
+      
       <Components.Header.header />
       
       {/* Video background with centered content */}
@@ -29,6 +31,8 @@ export default function Home() {
           <h1 className="tagline">Coming Soon...</h1>
         </div>
       </div>
+      <Components.Footer.footer />
+
     </main>
   );
 }
