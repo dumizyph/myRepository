@@ -16,7 +16,7 @@ export default function Home() {
         <video
           ref={videoRef}
           className="backgroundVideo"
-          src="/videos/5838634-uhd_3840_2160_30fps.mp4" // Use relative path to the video in public folder
+          src="https://itsabdulrafey.github.io/zyphalon/videos/5838634-uhd_3840_2160_30fps.mp4" // Use relative path to the video in public folder
           autoPlay
           loop
           muted
