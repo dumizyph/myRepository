@@ -33,7 +33,7 @@ export default function Header() {
       {/* Fullscreen Drawer for small screens */}
       <div className={`${styles.drawer} ${isDrawerOpen ? styles.drawerOpen : ''}`}>
         <div className={styles.drawerHeader}>
-          <h2>Zyphalon</h2>
+          <h2><img  src='/images/zyfhalon-removebg-preview.png'/></h2>
           <button className={styles.closeButton} onClick={toggleDrawer}>&times;</button>
         </div>
         <ul>

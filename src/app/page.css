@@ -48,21 +48,20 @@
 }
 
 .companyName {
-  font-size: 64px; /* Larger font size for a more prominent title */
-  font-weight: 700; /* Slightly bolder text for branding */
+  font-size: 100px;
   margin: 0;
   padding: 10px 0;
-  letter-spacing: 1px; /* Slight letter spacing for a clean look */
-  color: #a3cb38; /* Brand color */
-  text-transform: uppercase; /* Capitalize the company name */
+  letter-spacing: 1px;
+  color: aliceblue;
+  text-transform: uppercase;
 }
 
 .tagline {
-  font-size: 28px; /* Slightly larger tagline font size */
+  font-size: 28px;
   margin: 0;
   padding: 10px 0;
-  color: #2c3a47; /* Darker brand color for tagline */
-  font-style: italic; /* Add italic styling for a touch of elegance */
+  color: #a3cb38;
+  font-style: italic;
 }
 
 .fullScreenButton {
@@ -240,8 +239,44 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+/* Responsive styling for companyName and tagline */
+@media (max-width: 1200px) {
+  .companyName {
+    font-size: 80px; /* Adjusted for medium screens */
+  }
+
+  .tagline {
+    font-size: 24px; /* Adjusted for medium screens */
   }
 }
+
+@media (max-width: 768px) {
+  .companyName {
+    font-size: 60px; /* Adjusted for tablet screens */
+  }
+
+  .tagline {
+    font-size: 20px; /* Adjusted for tablet screens */
+  }
+
+  .content {
+    padding-left: 30px; /* Adjusted padding for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .companyName {
+    font-size: 40px; /* Adjusted for mobile screens */
+  }
+
+  .tagline {
+    font-size: 18px; /* Adjusted for mobile screens */
+  }
+
+  .content {
+    padding-left: 20px; /* Adjusted padding for mobile */
+    align-items: center; /* Center-align text on mobile */
+    text-align: center; /* Center-align text for mobile */
+  }
+}
+

@@ -27,12 +27,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
 .logo a img {
-  font-size: 24px;
   height: auto;
   width: 250px;
   color: white;
@@ -67,13 +65,14 @@
 }
 
 .nav ul li a:hover {
-  color: #a3cb38; /* Hover color to green */
+  color: #a3cb38;
 }
 
 .nav ul li a:hover::after {
-  width: 100%; /* Expands the gradient underline on hover */
+  width: 100%;
 }
 
+/* Burger Menu */
 .burger {
   display: none;
   flex-direction: column;
@@ -89,7 +88,6 @@
   transition: 0.3s;
 }
 
-/* Burger animation */
 .burger span.open:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -162,6 +160,7 @@
   font-size: 24px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .nav {
     display: none;
@@ -169,5 +168,23 @@
 
   .burger {
     display: flex;
+  }
+
+  .drawer ul li a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer ul li a {
+    font-size: 18px;
+  }
+
+  .drawerHeader h2 {
+    font-size: 20px;
+  }
+
+  .drawer {
+    padding-top: 40px;
   }
 }
