@@ -6,7 +6,7 @@
   font-family: 'Montserrat', sans-serif;
   height: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Keep elements spaced out */
   align-items: center;
   background-color: transparent;
 }
@@ -24,18 +24,31 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Prevent centering */
   align-items: center;
   width: 100%;
   margin: 0 auto;
 }
 
+/* Responsive Logo */
 .logo a img {
   height: 38px;
   width: auto;
   color: white;
   font-weight: 600;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .logo a img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo a img {
+    height: 25px;
+  }
 }
 
 /* Navbar Styles */
@@ -72,12 +85,25 @@
   width: 100%;
 }
 
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* Hide nav on smaller screens */
+  }
+}
+
 /* Burger Menu */
 .burger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
 }
 
 .burger span {
@@ -165,22 +191,14 @@
   color: #a3cb38;
 }
 
-/* Responsive Design */
+/* Responsive Drawer Links */
 @media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
-
-  .burger {
-    display: flex;
-  }
-
   .drawer ul li a {
     font-size: 20px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .drawer ul li a {
     font-size: 18px;
   }
@@ -194,7 +212,7 @@
   }
 }
 
-/* Optional Transitions for smoother drawer open/close animation */
+/* Drawer transitions for smoother open/close animation */
 .drawer {
   right: -100%;
   transition: right 0.3s ease-in-out;
@@ -202,4 +220,16 @@
 
 .drawerOpen {
   right: 0;
+}
+
+/* Prevent logo and elements from centering on smaller screens */
+@media (max-width: 600px) {
+  .header {
+    justify-content: space-between;
+    width: 100%; /* Ensures the logo and elements stay spaced out */
+  }
+
+  .container {
+    justify-content: space-between;
+  }
 }
