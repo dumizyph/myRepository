@@ -21,8 +21,27 @@
 
 /* Increase Drawer Width */
 .MuiDrawer-paper {
-  width: 400px; /* Increased drawer width */
-  max-width: 80%; /* Makes sure it's responsive on smaller screens */
+  width: 400px; /* Default width for larger screens */
+  max-width: 80%; /* Max width on smaller screens */
+}
+
+/* Responsive Drawer Width */
+@media (max-width: 1024px) {
+  .MuiDrawer-paper {
+    width: 350px; /* Adjust for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .MuiDrawer-paper {
+    width: 300px; /* Adjust for smaller tablets and large phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .MuiDrawer-paper {
+    width: 100%; /* Full width for small mobile screens */
+  }
 }
 
 /* Drawer List Styling */
@@ -66,7 +85,7 @@
   text-transform: capitalize;
 }
 
-/* Responsive Design for Drawer */
+/* Responsive Drawer Text */
 @media (max-width: 768px) {
   .drawerItem {
     font-size: 16px;
@@ -76,6 +95,22 @@
 @media (max-width: 480px) {
   .drawerHeader {
     padding: 10px;
+    width: 100%;
+  }
+
+  .logo a img {
+    height: 40px;
+  }
+
+  .drawerItem {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+@media (max-width: 300px) {
+  .drawerHeader {
+    
+    width: 100%;
   }
 
   .logo a img {

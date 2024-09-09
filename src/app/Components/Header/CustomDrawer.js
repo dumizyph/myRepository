@@ -8,7 +8,20 @@ export default function CustomDrawer({ isOpen, toggleDrawer }) {
       anchor="right"
       open={isOpen}
       onClose={toggleDrawer(false)}
-      sx={{ width: '400px', '& .MuiDrawer-paper': { width: '400px' } }} // Set the width
+
+      sx={{
+        '& .MuiDrawer-paper': {
+          width: {
+            xs: '100%', // Full width on extra small screens (mobile)
+            sm: '300px', // 300px on small screens
+            md: '400px', // 400px on medium and larger screens
+          },
+        },
+      }} // Set the responsive width
+
+
+
+
     >
       <div className={styles.drawerHeader}>
         {/* Logo */}
