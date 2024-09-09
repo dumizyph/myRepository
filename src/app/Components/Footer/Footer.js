@@ -411,24 +411,27 @@ export default function Footer() {
         </Grid>
 
         {/* Subscribe Section */}
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={3}  >
+
           <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '20px' }}>
             Subscribe
           </Typography>
           <Typography variant="body2" sx={{ marginBottom: '10px' }}>
             Stay updated with the latest in tech.
           </Typography>
-          <Box sx={{ display: 'flex', gap: '10px', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:"90%" }}>
             <TextField
               label="Email"
               variant="outlined"
               fullWidth
+              style={{width: '100%'}}
               sx={{ input: { color: 'white' }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'white' }, '&:hover fieldset': { borderColor: '#a3cb38' } } }}
             />
             <Button variant="contained" sx={{ backgroundColor: '#a3cb38', '&:hover': { backgroundColor: '#81b532' } }}>
               Submit
             </Button>
           </Box>
+         
         </Grid>
       </Grid>
 

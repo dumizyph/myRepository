@@ -34,7 +34,7 @@ export default function Header() {
         </nav>
 
         {/* MUI Burger Icon for small screens */}
-        <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)} className={styles.burger}>
+        <IconButton  aria-label="menu" onClick={toggleDrawer(true)} className={styles.burger}>
           <MenuIcon style={{ color: 'white' }} />
         </IconButton>
 
