@@ -283,7 +283,7 @@ a.secondary {
   }
 
   .content {
-    padding-left: 10px; /* Adjusted padding for mobile */
+    padding-left: 1px; /* Adjusted padding for mobile */
     align-items: center; /* Center-align text on mobile */
     text-align: center; /* Center-align text for mobile */
   }
