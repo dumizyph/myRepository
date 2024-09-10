@@ -19,7 +19,7 @@ export default function Home() {
         <video
           ref={videoRef}
           className="backgroundVideo"
-          src="/videos/2vedio full HD.mp4" // Use relative path to the video in public folder
+          src="/videos/systemvedioFullhd.mp4" // Use relative path to the video in public folder
           autoPlay
           loop
           muted

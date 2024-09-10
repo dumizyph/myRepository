@@ -419,15 +419,31 @@ export default function Footer() {
           <Typography variant="body2" sx={{ marginBottom: '10px' }}>
             Stay updated with the latest in tech.
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:"90%" }}>
-            <TextField
-              label="Email"
-              variant="outlined"
-              fullWidth
-              style={{width: '100%'}}
-              sx={{ input: { color: 'white' }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'white' }, '&:hover fieldset': { borderColor: '#a3cb38' } } }}
-            />
-            <Button variant="contained" sx={{ backgroundColor: '#a3cb38', '&:hover': { backgroundColor: '#81b532' } }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:"80%" }}>
+          <TextField
+  label="Email"
+  variant="outlined"
+  fullWidth
+  style={{ width: '100%' }}
+  InputLabelProps={{
+    style: { color: 'white' }, // Label color
+  }}
+  sx={{
+    input: { color: 'white' }, // Text color inside the input
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': { borderColor: 'white' }, // Border color
+      '&:hover fieldset': { borderColor: '#a3cb38' }, // Border color on hover
+    },
+    '& .MuiInputBase-input': {
+      color: 'white', // Ensures the text inside is white
+    },
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#a3cb38', // Border color when focused
+    },
+  }}
+/>
+
+            <Button variant="contained" sx={{marginTop:2, backgroundColor: '#a3cb38', '&:hover': { backgroundColor: 'white',color:"#a3cb38" } }}>
               Submit
             </Button>
           </Box>

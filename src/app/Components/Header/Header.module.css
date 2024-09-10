@@ -18,7 +18,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(to right, #a3cb38, #2c3a47, white);
+  background: white;
   z-index: -1;
 }
 

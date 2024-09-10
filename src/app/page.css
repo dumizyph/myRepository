@@ -120,7 +120,6 @@
   width: 100%;
   z-index: 10; /* Ensure it stays above other elements */
   backdrop-filter: blur(10px); /* Add a blur effect */
-  padding: 10px 20px; /* Optional: Adjust padding for space */
 }
 
 .main ol {
@@ -254,6 +253,9 @@ a.secondary {
 
   .tagline {
     font-size: 24px; /* Adjusted for medium screens */
+  }
+  .content {
+    padding-left: 30px; /* Adjusted padding for tablets */
   }
 }
 
