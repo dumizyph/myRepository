@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between; /* Keep elements spaced out */
   align-items: center;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .header::before {
