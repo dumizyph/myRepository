@@ -8,10 +8,11 @@ export default function Home() {
   const videoRef = useRef(null);
 
   return (
-
     <main className="main">
-      
-      <Components.Header.header />
+      {/* Transparent and absolutely positioned header */}
+      <header className="transparentHeader">
+        <Components.Header.header />
+      </header>
       
       {/* Video background with centered content */}
       <div className="videoBackground">
@@ -27,12 +28,12 @@ export default function Home() {
         </video>
         {/* Content over video */}
         <div className="content">
-        <p className="companyName">You Imagine, We Build</p>
+          <p className="companyName">You Imagine, We Build</p>
           <h1 className="tagline">Coming Soon...</h1>
         </div>
       </div>
+      
       <Components.Footer.footer />
-
     </main>
   );
 }

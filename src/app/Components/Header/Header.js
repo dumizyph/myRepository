@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
+    <div className={styles.header}>
       <div className={styles.container}>
         {/* Logo */}
         <div className={styles.logo}>
@@ -41,6 +41,6 @@ export default function Header() {
         {/* Custom Drawer Component */}
         <Components.Header.CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       </div>
-    </header>
+    </div>
   );
 }

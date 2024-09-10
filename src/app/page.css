@@ -22,7 +22,6 @@
   height: 100vh;
   overflow: hidden;
 }
-
 .backgroundVideo {
   position: absolute;
   top: 50%;
@@ -33,7 +32,6 @@
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-
 .content {
   position: relative;
   z-index: 2;
@@ -114,6 +112,15 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+}
+.transparentHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Ensure it stays above other elements */
+  backdrop-filter: blur(10px); /* Add a blur effect */
+  padding: 10px 20px; /* Optional: Adjust padding for space */
 }
 
 .main ol {
