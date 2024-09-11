@@ -1,44 +1,59 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu'; // MUI burger icon
-import styles from './Header.module.css';
-import CustomDrawer from './CustomDrawer'; // Import the drawer component
+import MenuIcon from '@mui/icons-material/Menu';
+import CustomDrawer from './CustomDrawer';
 import Components from '..';
+import styles from './Header.module.css';
+import { UserContext } from '@/Context/UserContext';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+  const {Divlocation } = useContext(UserContext);
   const toggleDrawer = (open) => () => {
     setIsDrawerOpen(open);
   };
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (Divlocation.current) {
+        const whiteSectionTop = Divlocation.current.offsetTop;
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition >= whiteSectionTop) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
-        {/* Logo */}
         <div className={styles.logo}>
           <a href="/">
-            <img src='/images/zyfhalon-removebg-preview.png' alt="Logo" />
+            <img src={`/images/${isScrolled?"Black-Zyphalon-Logo.png":"zyfhalon-removebg-preview.png"}`} alt="Logo" />
           </a>
         </div>
-
-        {/* Normal Nav for larger screens */}
         <nav className={styles.nav}>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" className={isScrolled ? styles.scrolledLink : ''}>Home</a></li>
+            <li><a href="#about" className={isScrolled ? styles.scrolledLink : ''}>About</a></li>
+            <li><a href="#services" className={isScrolled ? styles.scrolledLink : ''}>Services</a></li>
+            <li><a href="#contact" className={isScrolled ? styles.scrolledLink : ''}>Contact</a></li>
           </ul>
         </nav>
-
-        {/* MUI Burger Icon for small screens */}
-        <IconButton  aria-label="menu" onClick={toggleDrawer(true)} className={styles.burger}>
-          <MenuIcon style={{ color: 'white' }} />
+        <IconButton aria-label="menu" onClick={() => setIsDrawerOpen(true)} className={styles.burger}>
+          <MenuIcon style={{ color: isScrolled ? 'black' : 'white' }} />
         </IconButton>
-
-        {/* Custom Drawer Component */}
         <Components.Header.CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       </div>
     </div>

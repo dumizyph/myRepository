@@ -22,7 +22,16 @@
   background: white;
   z-index: -1;
 }
-
+.header.scrolled {
+  background-color: white; /* Background changes to white when scrolled */
+  
+}
+.header.scrolled::before {
+  background: black; /* Change background color when scrolled */
+}
+.nav ul li a.scrolledLink {
+  color: #0D2D43; /* Changes to black when scrolled over white section */
+}
 
 .container {
   display: flex;

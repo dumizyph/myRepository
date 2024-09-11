@@ -1,18 +1,20 @@
 "use client";
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
 import Components from '@/Components';
+import { UserContext } from '@/Context/UserContext';
 
 export default function ContactPage() {
   const videoRef = useRef(null);
-
+  const { Divlocation } = useContext(UserContext);
   return (
-    <>
+    <div >
       {/* Transparent and Fixed Header */}
 
 
       {/* Background Image (positioned behind the header) */}
       <Box
+      
         sx={{
           width: "100%",
           height: { xs: "200px", sm: "300px", md: "400px", lg: "500px" },
@@ -82,6 +84,7 @@ export default function ContactPage() {
       </Box>
       {/* Form Section */}
       <Box
+      ref={Divlocation}
         sx={{
           backgroundColor: "white",
           width: "100%",
@@ -143,6 +146,6 @@ export default function ContactPage() {
           </Grid>
         </form>
       </Box>
-    </>
+    </div>
   );
 }

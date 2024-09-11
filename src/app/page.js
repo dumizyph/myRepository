@@ -8,7 +8,7 @@ export default function Home() {
   const videoRef = useRef(null);
 
   return (
-    <main className="main">
+    <main id="white-section" className="main">
       {/* Transparent and absolutely positioned header */}
     
       
