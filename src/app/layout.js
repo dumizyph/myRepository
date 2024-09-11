@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Components from "@/Components";
+import { Box } from "@mui/material";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,7 +23,27 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <Box sx={{ width: "100%", position: "relative" }}>
+      <header className="transparentHeader">
+      <Box
+      component="header"
+      sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 10,
+        backgroundColor: "rgba(255, 255, 255, 0.1)", // Transparent header
+        
+      }}
+    >
+      {/* Insert your header component here */}
+      <Components.Header.header />
+    </Box>
+      </header>
         {children}
+        <Components.Footer.footer />
+        </Box>
       </body>
     </html>
   );

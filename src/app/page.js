@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import './page.css'; // Assuming you move the styles to a global CSS file
-import Components from './Components';
+import Components from '../Components';
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -10,9 +10,7 @@ export default function Home() {
   return (
     <main className="main">
       {/* Transparent and absolutely positioned header */}
-      <header className="transparentHeader">
-        <Components.Header.header />
-      </header>
+    
       
       {/* Video background with centered content */}
       <div className="videoBackground">
@@ -33,7 +31,6 @@ export default function Home() {
         </div>
       </div>
       
-      <Components.Footer.footer />
     </main>
   );
 }

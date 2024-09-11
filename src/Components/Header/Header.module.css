@@ -8,9 +8,10 @@
   display: flex;
   justify-content: space-between; /* Keep elements spaced out */
   align-items: center;
-  background-color: transparent !;
+  background: transparent; /* Set the background to transparent */
 }
 
+/* Keep the underline effect */
 .header::before {
   content: '';
   position: absolute;
@@ -21,6 +22,7 @@
   background: white;
   z-index: -1;
 }
+
 
 .container {
   display: flex;
