@@ -9,6 +9,7 @@
   justify-content: space-between; /* Keep elements spaced out */
   align-items: center;
   background: transparent; /* Set the background to transparent */
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Keep the underline effect */
@@ -32,7 +33,13 @@
 .nav ul li a.scrolledLink {
   color: #0D2D43; /* Changes to black when scrolled over white section */
 }
+.header.show {
+  transform: translateY(0);
+}
 
+.header.hide {
+  transform: translateY(-100%);
+}
 .container {
   display: flex;
   justify-content: space-between; /* Prevent centering */
@@ -145,7 +152,7 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   transition: right 0.3s ease-in-out;
   z-index: 999;
   padding-top: 60px;
@@ -162,7 +169,7 @@
   align-items: center;
   padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 

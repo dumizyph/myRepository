@@ -1,8 +1,8 @@
-import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
+import { Button, Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close'; // MUI close icon
 import styles from './CustomDrawer.module.css'; // Separate CSS for the drawer
 
-export default function CustomDrawer({ isOpen, toggleDrawer }) {
+export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
   return (
     <Drawer
       anchor="right"
@@ -51,6 +51,13 @@ export default function CustomDrawer({ isOpen, toggleDrawer }) {
           <ListItemText primary="Contact" />
         </ListItem>
       </List>
+      <Button
+           onClick={()=>{
+            router.push("/Contact")
+           }}
+          style={{ }}>
+              Get in touch
+             </Button>
     </Drawer>
   );
 }

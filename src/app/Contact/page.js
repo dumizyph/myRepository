@@ -3,6 +3,7 @@ import { useContext, useRef } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
 import Components from '@/Components';
 import { UserContext } from '@/Context/UserContext';
+import Logo from '@/Components/Loader/logo';
 
 export default function ContactPage() {
   const videoRef = useRef(null);
@@ -100,7 +101,7 @@ export default function ContactPage() {
         >
           Please fill the form below
         </Typography>
-
+     {/* <Logo/> */}
         <form>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
