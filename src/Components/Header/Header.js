@@ -1,13 +1,16 @@
 "use client";
 import { useState, useEffect, useContext } from 'react';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Components from '..';
 import styles from './Header.module.css';
 import { UserContext } from '@/Context/UserContext';
+import CustomDrawer from './CustomDrawer';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const Router=useRouter()
   const { Divlocation } = useContext(UserContext); // Tracking specific div location
   const [isScrolled, setIsScrolled] = useState(false); // To change header color based on specific div
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -88,11 +91,15 @@ export default function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  
   return (
     <div className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isVisible ? styles.show : styles.hide}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <a href="/">
+          <a onClick={()=>{
+            Router.push('/')
+          }}>
             <img src={`/images/${isScrolled ? "Black-Zyphalon-Logo.png" : "zyfhalon-removebg-preview.png"}`} alt="Logo" />
           </a>
         </div>
@@ -103,11 +110,21 @@ export default function Header() {
             <li><a href="#services" className={isScrolled ? styles.scrolledLink : ''}>Services</a></li>
             <li><a href="#contact" className={isScrolled ? styles.scrolledLink : ''}>Contact</a></li>
           </ul>
+          <Button
+          onClick={()=>{
+            Router.push('/Contact')
+          }}
+          style={{margin:10,color:isScrolled?"#0D2D43":"white",border:isScrolled?"2px solid #0D2D43":"2px solid white"}}>
+            Get in touch
+          </Button>
         </nav>
-        <IconButton aria-label="menu" onClick={() => setIsDrawerOpen(true)} className={styles.burger}>
+        <IconButton aria-label="menu" onClick={() => {
+          console.log("🚀 ~ Header ~ onClick:")
+          
+          setIsDrawerOpen(true)}} className={styles.burger}>
           <MenuIcon style={{ color: isScrolled ? 'black' : 'white' }} />
         </IconButton>
-        <Components.Header.CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+        <CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       </div>
     </div>
   );

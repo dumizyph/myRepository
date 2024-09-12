@@ -47,6 +47,7 @@
 /* Drawer List Styling */
 .drawerList {
   padding-top: 20px;
+  color: #0D2D43;
 }
 
 .drawerItem {
@@ -99,7 +100,7 @@
   }
 
   .logo a img {
-    height: 40px;
+    height: 10px;
   }
 
   .drawerItem {

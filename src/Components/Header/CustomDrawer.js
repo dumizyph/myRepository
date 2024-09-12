@@ -1,29 +1,14 @@
-import { Button, Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
+"use client"
+import { Button,Box, Drawer,ListItemIcon, IconButton, List, ListItem, ListItemText, ListItemButton, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close'; // MUI close icon
 import styles from './CustomDrawer.module.css'; // Separate CSS for the drawer
+import { useRouter } from 'next/navigation';
 
 export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
-  return (
-    <Drawer
-      anchor="right"
-      open={isOpen}
-      onClose={toggleDrawer(false)}
-
-      sx={{
-        '& .MuiDrawer-paper': {
-          width: {
-            xs: '100%', // Full width on extra small screens (mobile)
-            sm: '300px', // 300px on small screens
-            md: '400px', // 400px on medium and larger screens
-          },
-        },
-      }} // Set the responsive width
-
-
-
-
-    >
-      <div className={styles.drawerHeader}>
+  const Router=useRouter()
+  const DrawerList = (
+    <Box sx={{ width: 350 }} role="presentation" onClick={toggleDrawer(false)}>
+     <div className={styles.drawerHeader}>
         {/* Logo */}
         <div className={styles.logo}>
           <a href="/">
@@ -31,8 +16,10 @@ export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
           </a>
         </div>
         {/* Close Button */}
-        <IconButton onClick={toggleDrawer(false)} className={styles.closeButton}>
-          <CloseIcon />
+        <IconButton  className={styles.closeButton}>
+          <CloseIcon onClick={  () => {
+            toggleDrawer(false)
+          }} />
         </IconButton>
       </div>
       
@@ -51,13 +38,28 @@ export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
           <ListItemText primary="Contact" />
         </ListItem>
       </List>
-      <Button
+      <Button 
            onClick={()=>{
-            router.push("/Contact")
-           }}
-          style={{ }}>
-              Get in touch
-             </Button>
-    </Drawer>
+            
+            toggleDrawer(false)
+            Router.push("/Contact")
+          }}
+      style={{margin:10,color:"white",backgroundColor:"#0D2D43",width:"90%"}}>
+            Get in touch
+          </Button>
+   
+    </Box>
+  );
+
+
+
+
+  return (
+    
+      <Drawer   anchor={'right'} open={isOpen} onClose={toggleDrawer(false)}>
+        {DrawerList}
+      </Drawer>
+    
+    
   );
 }
