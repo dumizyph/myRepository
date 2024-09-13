@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import { UserProvider } from '@/Context/UserContext';
 import Loader from "@/Components/Loader/Loader";
 import { useState, useEffect } from "react";
-
+import { motion, useScroll, useSpring } from "framer-motion";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,14 +33,23 @@ export default function RootLayout({ children }) {
 
     return () => clearTimeout(timer); // Cleanup the timer when the component unmounts
   }, []);
-
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
   return (
     <html lang="en">
+       
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
       <Loader>
           <>
+
+
            <UserProvider>
           <Box sx={{ width: "100%", position: "relative" }}>
+
        <header className="transparentHeader">
        <Box
        component="header"

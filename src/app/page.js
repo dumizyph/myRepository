@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import './page.css'; // Assuming you move the styles to a global CSS file
 import Components from '../Components';
+import TextAnimationWrapper from '@/Components/Animations/textAnimation';
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -25,10 +26,19 @@ export default function Home() {
           Your browser does not support the video tag.
         </video>
         {/* Content over video */}
-        <div className="content">
-          <p className="companyName">You Imagine, We Build</p>
-          <h1 className="tagline">Coming Soon...</h1>
-        </div>
+
+        <TextAnimationWrapper>
+      <div className="content">
+        <p className="companyName">You Imagine, We Build</p>
+        <h1 className="tagline">Coming Soon...</h1>
+      </div>
+
+    
+
+
+
+    </TextAnimationWrapper>
+       
       </div>
       
     </main>
