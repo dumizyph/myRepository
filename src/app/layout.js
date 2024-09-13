@@ -4,6 +4,8 @@ import "./globals.css";
 import Components from "@/Components";
 import { Box } from "@mui/material";
 import { UserProvider } from '@/Context/UserContext';
+import Loader from "@/Components/Loader/Loader";
+import { useState, useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,35 +24,45 @@ const geistMono = localFont({
 // };
 
 export default function RootLayout({ children }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); // Loader will be visible for 2 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer when the component unmounts
+  }, []);
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-
-      <UserProvider>
-         <Box sx={{ width: "100%", position: "relative" }}>
-      <header className="transparentHeader">
-      <Box
-      component="header"
-      sx={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        zIndex: 10,
+      <Loader>
+          <>
+           <UserProvider>
+          <Box sx={{ width: "100%", position: "relative" }}>
+       <header className="transparentHeader">
+       <Box
+       component="header"
+       sx={{
+         position: "fixed",
+         top: 0,
+         left: 0,
+         width: "100%",
+         zIndex: 10,
+         
+       }}
+     >
+       <Components.Header.header />
+     </Box>
+       </header>
+         {children}
         
-      }}
-    >
-      {/* Insert your header component here */}
-      <Components.Header.header />
-    </Box>
-      </header>
-        {children}
-        <Components.Footer.footer />
-        </Box>
-      </UserProvider>
-
-
-     
+         <Components.Footer.footer />
+         </Box>
+           </UserProvider> 
+ </> </Loader>
+      
       </body>
     </html>
   );
