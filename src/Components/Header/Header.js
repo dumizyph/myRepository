@@ -69,7 +69,7 @@ export default function Header() {
         <div className={styles.container}>
           {/* Logo and Drawer */}
           <div style={{ height: "100%" }} className={styles.logo}>
-            <div className={styles.burger} style={{ right: 20, bottom: 28, position: "relative" }}>
+            <div className={styles.burger} style={{ position: "relative" }}>
               {/* Drawer remains visible even when header is hidden */}
               <MotionFramerDrawer isScrolled={isScrolled} isOpen={isOpen} toggleOpen={toggleOpen} />
             </div>
