@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useCycle } from "framer-motion";
 import styles from './CustomDrawer.module.css'; // Separate CSS for the drawer
 import { Button, Divider } from "@mui/material";
@@ -42,95 +42,90 @@ const menuItemVariants = {
   },
 };
 
-
-
 const Path = (props) => (
-     <motion.path
-       fill="transparent"
-       strokeWidth="3"
-       strokeLinecap="round"
-       {...props}
-     />
-   );
-   
-   const MenuToggle = ({ toggle, isScrolled, isOpen }) => (
-     <button
-       onClick={toggle}
-       style={{
-         outline: "none",
-         border: "none",
-         cursor: "pointer",
-         position: "absolute",
-         color: isScrolled ? "black" : isOpen ? "black" : "white",
-         top: 18,
-         left: 15,
-         width: 50,
-         height: 50,
-         borderRadius: "50%",
-         background: "transparent",  // Ensures transparent background
-         zIndex: 2,
-         pointerEvents: "auto", // Ensures the toggle button is interactable
-         padding: 0, // Removes any padding
-       }}
-     >
-       <svg width="20" height="20" viewBox="0 0 23 23">
-         {/* First Path (Top Line) */}
-         <Path
-           initial={{ d: "M 2 2.5 L 20 2.5", opacity: 1 }} // Ensure it's visible initially
-           animate={{
-             stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Animate stroke color based on isScrolled and isOpen
-           }}
-           transition={{
-             stroke: {
-               duration: 0.5,
-               delay: isOpen ? 0 : 1.5, // Increased delay when closing (black to white)
-               ease: "easeInOut",
-             },
-           }}
-           variants={{
-             closed: { d: "M 2 2.5 L 20 2.5" },
-             open: { d: "M 3 16.5 L 17 2.5" },
-           }}
-         />
-   
-         {/* Second Path (Middle Line) */}
-         <Path
-           initial={{ opacity: 1 }} // Ensure it's visible on page load
-           animate={{
-             stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Path color changes based on isScrolled and isOpen
-             opacity: isOpen ? 0 : 1, // Make it disappear when open and reappear when closed
-           }}
-           transition={{
-             stroke: { duration: 0.5, delay: isOpen ? 0 : 1.5, ease: "easeInOut" }, // Increased delay for stroke color change
-             opacity: { duration: 0.3, delay: isOpen ? 0 : 1 }, // Slightly increased delay for opacity when closing
-           }}
-           d="M 2 9.423 L 20 9.423"
-         />
-   
-         {/* Third Path (Bottom Line) */}
-         <Path
-           initial={{ d: "M 2 16.346 L 20 16.346", opacity: 1 }} // Ensure it's visible initially
-           animate={{
-             stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Animate stroke color based on isScrolled and isOpen
-           }}
-           transition={{
-             stroke: {
-               duration: 0.5,
-               delay: isOpen ? 0 : 1.5, // Increased delay when closing (black to white)
-               ease: "easeInOut",
-             },
-           }}
-           variants={{
-             closed: { d: "M 2 16.346 L 20 16.346" },
-             open: { d: "M 3 2.5 L 17 16.346" },
-           }}
-         />
-       </svg>
-     </button>
-   );
+  <motion.path
+    fill="transparent"
+    strokeWidth="3"
+    strokeLinecap="round"
+    {...props}
+  />
+);
 
+const MenuToggle = ({ toggle, isScrolled, isOpen }) => (
+  <button
+    onClick={toggle}
+    style={{
+      outline: "none",
+      border: "none",
+      cursor: "pointer",
+      position: "absolute",
+      color: isScrolled ? "black" : isOpen ? "black" : "white",
+      top: 18,
+      left: 15,
+      width: 50,
+      height: 50,
+      borderRadius: "50%",
+      background: "transparent",  // Ensures transparent background
+      zIndex: 2,
+      pointerEvents: "auto", // Ensures the toggle button is interactable
+      padding: 0, // Removes any padding
+    }}
+  >
+    <svg width="20" height="20" viewBox="0 0 23 23">
+      {/* First Path (Top Line) */}
+      <Path
+        initial={{ d: "M 2 2.5 L 20 2.5", opacity: 1 }} // Ensure it's visible initially
+        animate={{
+          stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Animate stroke color based on isScrolled and isOpen
+        }}
+        transition={{
+          stroke: {
+            duration: 0.5,
+            delay: isOpen ? 0 : 1.5, // Increased delay when closing (black to white)
+            ease: "easeInOut",
+          },
+        }}
+        variants={{
+          closed: { d: "M 2 2.5 L 20 2.5" },
+          open: { d: "M 3 16.5 L 17 2.5" },
+        }}
+      />
 
-   
+      {/* Second Path (Middle Line) */}
+      <Path
+        initial={{ opacity: 1 }} // Ensure it's visible on page load
+        animate={{
+          stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Path color changes based on isScrolled and isOpen
+          opacity: isOpen ? 0 : 1, // Make it disappear when open and reappear when closed
+        }}
+        transition={{
+          stroke: { duration: 0.5, delay: isOpen ? 0 : 1.5, ease: "easeInOut" }, // Increased delay for stroke color change
+          opacity: { duration: 0.3, delay: isOpen ? 0 : 1 }, // Slightly increased delay for opacity when closing
+        }}
+        d="M 2 9.423 L 20 9.423"
+      />
+
+      {/* Third Path (Bottom Line) */}
+      <Path
+        initial={{ d: "M 2 16.346 L 20 16.346", opacity: 1 }} // Ensure it's visible initially
+        animate={{
+          stroke: isScrolled ? "black" : isOpen ? "black" : "white", // Animate stroke color based on isScrolled and isOpen
+        }}
+        transition={{
+          stroke: {
+            duration: 0.5,
+            delay: isOpen ? 0 : 1.5, // Increased delay when closing (black to white)
+            ease: "easeInOut",
+          },
+        }}
+        variants={{
+          closed: { d: "M 2 16.346 L 20 16.346" },
+          open: { d: "M 3 2.5 L 17 16.346" },
+        }}
+      />
+    </svg>
+  </button>
+);
 
 const MenuItem = ({ i, isOpen, values }) => {
   const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
@@ -180,18 +175,39 @@ const Navigation = ({ isOpen }) => {
       {itemIds.map((values, i) => (
         <>
           <MenuItem i={i} key={i} values={values} isOpen={isOpen} />
-          {isOpen?<Divider style={{width:"100%"}} />:""}
-
+          {isOpen ? <Divider style={{ width: "100%" }} /> : ""}
         </>
       ))}
     </motion.ul>
   );
 };
 
-const MotionFramerDrawer = ({ isOpen, toggleOpen,isScrolled }) => {
-     const Router=useRouter()
-
+const MotionFramerDrawer = ({ isOpen, toggleOpen, isScrolled }) => {
+  const Router = useRouter();
   const containerRef = useRef(null);
+
+  // Add state for responsive drawer width
+  const [drawerWidth, setDrawerWidth] = useState("400px");
+
+  // Set up a listener to update the drawer width based on window size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 400) {
+        setDrawerWidth("100vw"); // Set it to 100vw to take full screen width
+      } else {
+        setDrawerWidth("400px");
+      }
+    };
+
+    // Add the event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call the handler once to set the initial width
+    handleResize();
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.nav
@@ -199,11 +215,11 @@ const MotionFramerDrawer = ({ isOpen, toggleOpen,isScrolled }) => {
       animate={isOpen ? "open" : "closed"}
       ref={containerRef}
       style={{
-        position: "absolute",
+        position: "fixed", // Use 'fixed' instead of 'absolute' to ensure it's not affected by its parent
         top: 0,
         left: 0,
         bottom: 0,
-        width: "400px",
+        width: drawerWidth, // Use dynamic width based on window size
         height: "100vh",
         zIndex: 1,
         pointerEvents: isOpen ? "auto" : "none",
@@ -232,33 +248,35 @@ const MotionFramerDrawer = ({ isOpen, toggleOpen,isScrolled }) => {
           },
         }}
       >
-      <motion.div
-  initial={{ opacity: 0 }} // Start hidden
-  animate={{
-    opacity: isOpen ? 1 : 0, // Fade in or out based on isOpen
-  }}
-  transition={{
-    duration: 0.5, // Duration of the animation
-    ease: "easeInOut", // Smooth transition
-  }}
-  style={{
-    display: "flex", // Keep the original flex display
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-    height: 65,
-    marginRight: 30,
-    width: "100%",
-    paddingRight: 20,
-  }}
->
- 
-    <img onClick={()=>{
-
-toggleOpen(false)
-Router.push("/")
-    }} style={{width:"auto",height:34}} src="/images/Black-Zyphalon-Logo.png" alt="Logo" />
-  
-</motion.div>
+        <motion.div
+          initial={{ opacity: 0 }} // Start hidden
+          animate={{
+            opacity: isOpen ? 1 : 0, // Fade in or out based on isOpen
+          }}
+          transition={{
+            duration: 0.5, // Duration of the animation
+            ease: "easeInOut", // Smooth transition
+          }}
+          style={{
+            display: "flex", // Keep the original flex display
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            height: 65,
+            marginRight: 30,
+            width: "100%",
+            paddingRight: 20,
+          }}
+        >
+          <img
+            onClick={() => {
+              toggleOpen(false);
+              Router.push("/");
+            }}
+            style={{ width: "auto", height: 34 }}
+            src="/images/Black-Zyphalon-Logo.png"
+            alt="Logo"
+          />
+        </motion.div>
       </motion.div>
 
       <Navigation isOpen={isOpen} />
@@ -277,7 +295,6 @@ Router.push("/")
           y: isOpen ? 0 : 50, // Slide in/out vertically
         }}
         transition={{
-     
           x: {
             delay: isOpen ? 0 : 1.5,
             duration: 0.5,
@@ -292,17 +309,20 @@ Router.push("/")
             backgroundColor: "#0D2D43",
             color: "white",
           }}
-          onClick={()=>{
-            
-               toggleOpen(false)
-               Router.push("/Contact")
-             }}
+          onClick={() => {
+            toggleOpen(false);
+            Router.push("/Contact");
+          }}
         >
           Get in Touch
         </Button>
       </motion.div>
 
-      <MenuToggle isOpen={isOpen} isScrolled={isScrolled} toggle={() => toggleOpen()} />
+      <MenuToggle
+        isOpen={isOpen}
+        isScrolled={isScrolled}
+        toggle={() => toggleOpen()}
+      />
     </motion.nav>
   );
 };
