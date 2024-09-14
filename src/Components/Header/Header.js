@@ -7,9 +7,13 @@ import styles from './Header.module.css';
 import { UserContext } from '@/Context/UserContext';
 import CustomDrawer from './CustomDrawer';
 import { useRouter } from 'next/navigation';
+import MotionFramerDrawer from './MotionFramerDrawer';
+import { useCycle } from 'framer-motion';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isOpen, toggleOpen] = useCycle(false, true); // For the MotionFramerDrawer
+
   const Router = useRouter();
   const { Divlocation } = useContext(UserContext); // Tracking specific div location
   const [isScrolled, setIsScrolled] = useState(false); // To change header color based on specific div
@@ -36,13 +40,15 @@ export default function Header() {
         }
       }
 
-      // Hide header when scrolling down, show when scrolling up
-      if (scrollPosition > lastScrollY) {
-        // Scrolling down, hide header
-        setIsVisible(false);
-      } else {
-        // Scrolling up, show header
-        setIsVisible(true);
+      // Hide header when scrolling down, show when scrolling up (only if drawer is not open)
+      if (!isOpen) {
+        if (scrollPosition > lastScrollY) {
+          // Scrolling down, hide header
+          setIsVisible(false);
+        } else {
+          // Scrolling up, show header
+          setIsVisible(true);
+        }
       }
 
       // Update the last scroll position
@@ -54,20 +60,31 @@ export default function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY, Divlocation]);
+  }, [lastScrollY, Divlocation, isOpen]); // Include `isOpen` in the dependency array
 
   return (
     <div>
       {/* Header */}
       <div className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isVisible ? styles.show : styles.hide}`}>
         <div className={styles.container}>
-          <div className={styles.logo}>
-            <a onClick={() => {
-              Router.push('/')
-            }}>
-              <img src={`/images/${isScrolled ? "Black-Zyphalon-Logo.png" : "zyfhalon-removebg-preview.png"}`} alt="Logo" />
+          {/* Logo and Drawer */}
+          <div style={{ height: "100%" }} className={styles.logo}>
+            <div className={styles.burger} style={{ right: 20, bottom: 28, position: "relative" }}>
+              {/* Drawer remains visible even when header is hidden */}
+              <MotionFramerDrawer isScrolled={isScrolled} isOpen={isOpen} toggleOpen={toggleOpen} />
+            </div>
+
+            <a
+              onClick={() => {
+                Router.push('/');
+              }}
+              style={{ marginLeft: 40, marginTop: 40 }}
+            >
+              <img src={`/images/${isScrolled ? 'Black-Zyphalon-Logo.png' : 'zyfhalon-removebg-preview.png'}`} alt="Logo" />
             </a>
           </div>
+
+          {/* Navigation */}
           <nav className={styles.nav}>
             <ul>
               <li><a href="#home" className={isScrolled ? styles.scrolledLink : ''}>Home</a></li>
@@ -77,30 +94,31 @@ export default function Header() {
             </ul>
             <Button
               onClick={() => {
-                Router.push('/Contact')
+                Router.push('/Contact');
               }}
-              style={{ margin: 10, color: isScrolled ? "#0D2D43" : "white", border: isScrolled ? "2px solid #0D2D43" : "2px solid white" }}>
+              style={{ margin: 10, color: isScrolled ? '#0D2D43' : 'white', border: isScrolled ? '2px solid #0D2D43' : '2px solid white' }}
+            >
               Get in touch
             </Button>
           </nav>
-          <IconButton aria-label="menu" onClick={() => setIsDrawerOpen(true)} className={styles.burger}>
-            <MenuIcon style={{ color: isScrolled ? 'black' : 'white' }} />
-          </IconButton>
 
-          <CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+          {/* <IconButton aria-label="menu" onClick={() => setIsDrawerOpen(true)} className={styles.burger}>
+            <MenuIcon style={{ color: isScrolled ? 'black' : 'white' }} />
+          </IconButton> */}
+
         </div>
       </div>
 
       {/* Progress Bar */}
       <div
-        // className={styles.progressBar}
         style={{
-         
-          // left: 0,
-          // right: 0,
-       
+          position: 'fixed', // Fix the progress bar at the top
+          top: 0,
+          left: 0,
+          right: 0,
         }}
       >
+        <Components.Header.CustomDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
         <Components.Animations.ScrollProgressBar top={isVisible} />
       </div>
     </div>

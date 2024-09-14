@@ -7,6 +7,7 @@ import { UserProvider } from '@/Context/UserContext';
 import Loader from "@/Components/Loader/Loader";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import MotionFramerDrawer from "@/Components/Header/MotionFramerDrawer";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
        
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+
       <Loader>
           <>
 
@@ -51,6 +53,7 @@ export default function RootLayout({ children }) {
           <Box sx={{ width: "100%", position: "relative" }}>
 
        <header className="transparentHeader">
+
        <Box
        component="header"
        sx={{
@@ -70,7 +73,9 @@ export default function RootLayout({ children }) {
          <Components.Footer.footer />
          </Box>
            </UserProvider> 
- </> </Loader>
+ </>
+ 
+  </Loader>
       
       </body>
     </html>
