@@ -4,7 +4,7 @@ import { Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Components from '..';
 import styles from './Header.module.css';
-import { UserContext } from '@/Context/UserContext';
+import { UserContext } from '../../Context/UserContext';
 import CustomDrawer from './CustomDrawer';
 import { useRouter } from 'next/navigation';
 import MotionFramerDrawer from './MotionFramerDrawer';

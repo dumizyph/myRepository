@@ -1,10 +1,7 @@
 "use client";
 import { useContext, useRef } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
-import Components from '@/Components';
-import { UserContext } from '@/Context/UserContext';
-import Logo from '@/Components/Loader/Loader';
-import MotionFramerDrawer from '@/Components/Header/MotionFramerDrawer';
+import { UserContext } from '../../Context/UserContext';
 
 export default function ContactPage() {
   const videoRef = useRef(null);
