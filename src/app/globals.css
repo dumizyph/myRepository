@@ -4,6 +4,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Helvetica Neue', 'Ubuntu', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +24,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Helvetica Neue', 'Ubuntu', sans-serif;
+  font-family: var(--primary-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,8 +40,115 @@ a {
   text-decoration: none;
 }
 
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--secondary-font);
+  color: var(--foreground);
+}
+
+/* Paragraph Styles */
+p {
+  font-family: var(--primary-font);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Button Styles */
+button {
+  font-family: var(--secondary-font);
+  background-color: var(--foreground);
+  color: var(--background);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #444444;
+}
+
+/* Anchor Link Styles */
+a {
+  font-family: var(--primary-font);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff6347; /* Change link color on hover */
+}
+
+/* Responsive Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  p {
+    font-size: 0.9rem;
   }
 }

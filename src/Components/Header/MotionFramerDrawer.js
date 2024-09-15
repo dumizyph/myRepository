@@ -211,6 +211,9 @@ const MotionFramerDrawer = ({ isOpen, toggleOpen, isScrolled }) => {
         pointerEvents: isOpen ? "auto" : "none",
       }}
     >
+      <div style={{height:"100%"}}>
+
+      
       <motion.div
         variants={sidebarVariants}
         style={{
@@ -310,6 +313,7 @@ const MotionFramerDrawer = ({ isOpen, toggleOpen, isScrolled }) => {
         isScrolled={isScrolled}
         toggle={() => toggleOpen()}
       />
+      </div>
     </motion.nav>
   );
 };
