@@ -13,6 +13,8 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
+  width: 100%;
+  background-color: #0070f3;
   font-family: var(--font-geist-sans);
 }
 
@@ -112,6 +114,8 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  justify-content: center;
+  align-items: center;
 }
 .transparentHeader {
   position: absolute;

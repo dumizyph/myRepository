@@ -1,13 +1,16 @@
 "use client";
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import Image from 'next/image';
 import './page.css'; // Assuming you move the styles to a global CSS file
 import Components from '../Components';
 import TextAnimationWrapper from '@/Components/Animations/textAnimation';
+import CombinedComponent from '@/Components/About';
+import About from '@/Components/About';
+import { UserContext } from '@/Context/UserContext';
 
 export default function Home() {
   const videoRef = useRef(null);
-
+  const { Divlocation } = useContext(UserContext);
   return (
     <main id="white-section" className="main">
       {/* Transparent and absolutely positioned header */}
@@ -40,6 +43,10 @@ export default function Home() {
     </TextAnimationWrapper>
        
       </div>
+      <div ref={Divlocation} style={{width:"90%",height:"100%",margin:0}}>
+      <About/>
+      </div>
+    
       
     </main>
   );
