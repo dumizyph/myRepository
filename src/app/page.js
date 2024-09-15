@@ -2,11 +2,9 @@
 import { useContext, useRef } from 'react';
 import Image from 'next/image';
 import './page.css'; // Assuming you move the styles to a global CSS file
-import Components from '../Components';
-import TextAnimationWrapper from '@/Components/Animations/textAnimation';
-import CombinedComponent from '@/Components/About';
-import About from '@/Components/About';
-import { UserContext } from '@/Context/UserContext';
+
+import About from '../Components/About';
+import { UserContext } from '../Context/UserContext';
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -30,7 +28,6 @@ export default function Home() {
         </video>
         {/* Content over video */}
 
-        <TextAnimationWrapper>
       <div className="content">
         <p className="companyName">You Imagine, We Build</p>
         <h1 className="tagline">Coming Soon...</h1>
@@ -40,7 +37,6 @@ export default function Home() {
 
 
 
-    </TextAnimationWrapper>
        
       </div>
       <div ref={Divlocation} style={{width:"90%",height:"100%",margin:0}}>

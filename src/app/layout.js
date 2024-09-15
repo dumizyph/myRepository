@@ -1,13 +1,12 @@
 "use client";
 import localFont from "next/font/local";
 import "./globals.css";
-import Components from "@/Components";
+import Components from "../Components";
 import { Box } from "@mui/material";
-import { UserProvider } from '@/Context/UserContext';
-import Loader from "@/Components/Loader/Loader";
+import { UserProvider } from '../Context/UserContext';
+import Loader from "../Components/Loader/Loader";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import MotionFramerDrawer from "@/Components/Header/MotionFramerDrawer";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
