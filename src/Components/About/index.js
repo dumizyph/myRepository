@@ -65,7 +65,6 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               fontWeight: "bold",
               transition: "color 0.2s ease", // Smooth transition with delay
               position: "relative", // Required for absolute positioning of the line
-              backgroundColor: "red",
             }}
           >
             /////////
