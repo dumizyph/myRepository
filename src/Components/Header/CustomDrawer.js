@@ -15,7 +15,6 @@ export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
             <img src="/images/zyfhalon-removebg-preview.png" alt="Logo" />
           </a>
         </div>
-        {/* Close Button */}
         <IconButton  className={styles.closeButton}>
           <CloseIcon onClick={  () => {
             toggleDrawer(false)
@@ -23,7 +22,6 @@ export default function CustomDrawer({ isOpen, toggleDrawer,isScrolled }) {
         </IconButton>
       </div>
       
-      {/* Drawer List */}
       <List className={styles.drawerList}>
         <ListItem button component="a" href="#home" onClick={toggleDrawer(false)} className={styles.drawerItem}>
           <ListItemText primary="Home" />
