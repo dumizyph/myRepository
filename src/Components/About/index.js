@@ -67,7 +67,6 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               position: "relative", // Required for absolute positioning of the line
             }}
           >
-            /////////
             {title}
             {/* The animated line under the title */}
             <Box
