@@ -92,6 +92,7 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
             sx={{
               color: "#666", // Example: light gray text for description
               fontSize: "14px",
+              backgroundColor:"red"
             }}
           >
             {description}
