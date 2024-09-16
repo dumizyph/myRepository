@@ -45,7 +45,9 @@
   padding-left: 50px; /* Padding for spacing from the left */
   height: 100vh;
   color: white;
+  background-color: rgba(0, 0, 0, 0.3); /* Black with 50% opacity */
 }
+
 
 .companyName {
   font-size: 100px;
