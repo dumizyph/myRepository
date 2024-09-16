@@ -93,7 +93,7 @@ const technologies = [
     icon: typescript,
   },
   {
-    name: "React JS",
+    name: "React JS.....",
     icon: reactjs,
   },
   {

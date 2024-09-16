@@ -67,6 +67,7 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               position: "relative", // Required for absolute positioning of the line
             }}
           >
+
             {title}
             {/* The animated line under the title */}
             <Box
@@ -90,6 +91,7 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
             sx={{
               color: "#666", // Example: light gray text for description
               fontSize: "14px",
+              backgroundColor:"red"
             }}
           >
             {description}

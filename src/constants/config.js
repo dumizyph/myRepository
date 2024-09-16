@@ -35,8 +35,8 @@ export const config = {
       content: `We offer a wide range of tailored software solutions, from web and mobile development to cloud services and user-focused design. Our team is dedicated to delivering innovative and scalable products that help businesses grow and improve efficiency.`,
     },
     experience: {
-      p: "What I have done so far",
-      h2: "Work Experience.",
+      p: "What I have done so far...........",
+      h2: "Work Experience.......",
     },
     feedbacks: {
       p: "What others say",
