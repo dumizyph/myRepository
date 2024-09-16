@@ -39,9 +39,9 @@ export default function Home() {
 
        
       </div>
-      {/* <div ref={Divlocation} style={{width:"90%",height:"100%",margin:0}}>
+      <div ref={Divlocation} style={{width:"90%",height:"100%",margin:0}}>
       <About/>
-      </div> */}
+      </div>
     
       
     </main>
