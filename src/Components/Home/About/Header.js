@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Typography, Box } from "@mui/material";
-import { textVariant } from "../../utils/motion";
+import { textVariant } from "../../../utils/motion";
 
 export const Header = ({ useMotion, p, h2 }) => {
   const Content = () => (

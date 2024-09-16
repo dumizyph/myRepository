@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { services } from "../../constants";
-import { SectionWrapper } from "../../hoc";
-import { fadeIn } from "../../utils/motion";
-import { config } from "../../constants/config";
+import { services } from "../../../constants";
+import { SectionWrapper } from "../../../hoc";
+import { fadeIn } from "../../../utils/motion";
+import { config } from "../../../constants/config";
 import { Header } from "./Header";
 import { Box, Typography } from "@mui/material";
-import Color from "../../utils/Color";
-import webtech from "../../assets/deployment.png";
+import Color from "../../../utils/Color";
 import Image from 'next/image';
 const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
   return (

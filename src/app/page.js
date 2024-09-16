@@ -3,10 +3,10 @@ import { useContext, useRef } from 'react';
 import Image from 'next/image';
 import './page.css'; // Assuming you move the styles to a global CSS file
 
-import About from '../Components/About';
 import { UserContext } from '../Context/UserContext';
 import { Button } from '@mui/material';
 import Color from '../utils/Color';
+import Components from '../Components';
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -17,32 +17,10 @@ export default function Home() {
 
 
       {/* Video background with centered content */}
-      <div className="videoBackground">
-        <video
-          ref={videoRef}
-          className="backgroundVideo"
-          src="/videos/systemvedioFullhd.mp4" // Use relative path to the video in public folder
-          autoPlay
-          loop
-          muted
-        >
-          Your browser does not support the video tag.
-        </video>
-        {/* Content over video */}
-
-        <div className="content">
-          <p className="companyName">You Imagine, We Build</p>
-          <h1 className="tagline">Coming Soon...</h1>
-        </div>
-
-
-
-
-
-
-      </div>
+      <Components.Home.SliderSection/>
+    
       <div ref={Divlocation} style={{ width: "90%", height: "100%", margin: 0 }}>
-        <About />
+        <Components.Home.About />
       </div>
       <div className="videoBackground">
         <video
