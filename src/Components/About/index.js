@@ -68,6 +68,7 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               backgroundColor: "red",
             }}
           >
+            /////////
             {title}
             {/* The animated line under the title */}
             <Box
