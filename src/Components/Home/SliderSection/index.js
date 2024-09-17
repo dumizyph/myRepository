@@ -37,20 +37,45 @@ const PrevArrow = ({ onClick }) => (
     sx={{
       backgroundColor: 'transparent',
       borderRadius: '50%',
-      width: '80px',
-      height: '80px',
+      width: {
+        xs: '50px', // Smaller size on extra small screens
+        sm: '60px', // Medium size on small screens
+        md: '70px', // Large size on medium screens
+        lg: '80px', // Largest size on large screens
+      },
+      height: {
+        xs: '50px', // Smaller size on extra small screens
+        sm: '60px', // Medium size on small screens
+        md: '70px', // Large size on medium screens
+        lg: '80px', // Largest size on large screens
+      },
       color: 'white',
       position: 'absolute',
-      left: '10px',
+      left: {
+        xs: '5px', // Closer to the edge on small screens
+        sm: '10px', // Slightly further on small screens
+      },
       top: '50%',
       zIndex: 3, // Ensuring the button is clickable and on top of overlay
+      transform: 'translateY(-50%)',
       '&:hover': {
         color: Color.Green,
       },
     }}
     onClick={onClick}
   >
-    <ArrowBackIosNewIcon sx={{ fontSize: '60px' }} />
+    <ArrowBackIosNewIcon
+      sx={{
+        color:"gray",
+
+        fontSize: {
+          xs: '30px', // Smaller icon size on extra small screens
+          sm: '40px', // Medium icon size on small screens
+          md: '50px', // Large icon size on medium screens
+          lg: '60px', // Largest icon size on large screens
+        },
+      }}
+    />
   </IconButton>
 );
 
@@ -59,22 +84,47 @@ const NextArrow = ({ onClick }) => (
     sx={{
       backgroundColor: 'transparent',
       borderRadius: '50%',
-      width: '80px',
-      height: '80px',
+      width: {
+        xs: '50px', // Smaller size on extra small screens
+        sm: '60px', // Medium size on small screens
+        md: '70px', // Large size on medium screens
+        lg: '80px', // Largest size on large screens
+      },
+      height: {
+        xs: '50px', // Smaller size on extra small screens
+        sm: '60px', // Medium size on small screens
+        md: '70px', // Large size on medium screens
+        lg: '80px', // Largest size on large screens
+      },
       color: 'white',
       position: 'absolute',
-      right: '10px',
+      right: {
+        xs: '5px', // Closer to the edge on small screens
+        sm: '10px', // Slightly further on small screens
+      },
       top: '50%',
       zIndex: 3, // Ensuring the button is clickable and on top of overlay
+      transform: 'translateY(-50%)',
       '&:hover': {
         color: Color.Green,
       },
     }}
     onClick={onClick}
   >
-    <ArrowForwardIosIcon sx={{ fontSize: '60px' }} />
+    <ArrowForwardIosIcon
+      sx={{
+        color:"gray",
+        fontSize: {
+          xs: '30px', // Smaller icon size on extra small screens
+          sm: '40px', // Medium icon size on small screens
+          md: '50px', // Large icon size on medium screens
+          lg: '60px', // Largest icon size on large screens
+        },
+      }}
+    />
   </IconButton>
 );
+
 
 // Main Slider Section using Framer Motion
 const SliderSection = () => {
