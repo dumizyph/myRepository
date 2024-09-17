@@ -35,6 +35,7 @@ export default function Home() {
         {/* Content over video */}
 
         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} className="content">
+          
           <span className="companyName">
             You next starts right here
           </span>

@@ -43,9 +43,14 @@
   align-items: flex-start; /* Align the text to the left */
   text-align: left; /* Ensure text alignment is left */
   padding-left: 50px; /* Padding for spacing from the left */
+  padding-top: 50px; /* Padding for spacing from the left */
+  padding-bottom: 50px; /* Padding for spacing from the left */
+  padding-right: 50px; /* Padding for spacing from the left */
+
   height: 100vh;
   color: white;
   background-color: rgba(0, 0, 0, 0.3); /* Black with 50% opacity */
+  padding: 20px;
 }
 
 
@@ -56,6 +61,17 @@
   letter-spacing: 1px;
   color: aliceblue;
   text-transform: uppercase;
+  margin-left: 10%;
+}
+.contentinnerDiv{
+  font-size: 100px;
+  margin: 0;
+  padding: 10px 0;
+  letter-spacing: 1px;
+  color: aliceblue;
+  text-transform: uppercase;
+  margin-left: 10%;
+  background-color:aqua;
 }
 
 .tagline {
