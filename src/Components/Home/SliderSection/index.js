@@ -7,8 +7,7 @@ import Color from '../../../utils/Color';
 
 const videos = [
   '/videos/systemvedioFullhd.mp4',
-  '/videos/oneMoreFullHD.mp4',
-  '/videos/join us.mp4',
+  '/videos/in full hd.mp4',
 ];
 
 const variants = {
