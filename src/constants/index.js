@@ -49,6 +49,7 @@ import webdev from "/public/images/icons/deployment.png"
 import mobiledev from "/public/images/icons/native.png"
 import UIUXdev from "/public/images/icons/front-development.png"
 import clouddev from "/public/images/icons/api.png"
+import customSoftwareDev from "/public/images/icons/customSoftware.png"
 
 const services = [
   {
@@ -71,7 +72,14 @@ const services = [
     icon: UIUXdev,
     description: "We design intuitive and user-friendly interfaces for a seamless experience.",
   },
+  {
+    title: "Custom Software Development",
+    icon: customSoftwareDev, // Ensure this icon is properly set in your assets
+    description: "We develop bespoke software solutions focused on scalability, security, and performance to meet specific business needs.",
+  },
 ];
+
+
 
 
 
