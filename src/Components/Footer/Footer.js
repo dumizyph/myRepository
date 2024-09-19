@@ -24,7 +24,7 @@ export default function Footer() {
             123 Main Street, City Name, Country
           </Typography>
           <Link
-            href="mailto:info@yourcompany.com"
+            href="mailto:info@zyphalon.com"
             sx={{
               color: 'white',
               textDecoration: 'none',
@@ -49,7 +49,7 @@ export default function Footer() {
               },
             }}
           >
-            info@yourcompany.com
+            info@zyphalon.com
           </Link>
           <Box sx={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
             <IconButton href="https://facebook.com" target="_blank" sx={{ color: 'white', '&:hover': { color: '#a3cb38' } }}>
