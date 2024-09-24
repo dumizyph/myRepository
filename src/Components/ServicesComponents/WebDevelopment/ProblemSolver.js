@@ -1,5 +1,5 @@
 // Import dependencies
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
 import { motion } from 'framer-motion'; // Import Framer Motion
@@ -11,6 +11,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import Color from '../../../utils/Color';
 import { fadeIn, textVariant } from '../../../utils/motion';
+import { UserContext } from '../../../Context/UserContext';
 
 // Data for cards
 const data = [
@@ -66,8 +67,10 @@ const RotatingSphere = () => {
 };
 
 const ProblemSolutionCards = () => {
+  const { Divlocation } = useContext(UserContext);
   return (
     <motion.section
+    ref={Divlocation}
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.25 }}
