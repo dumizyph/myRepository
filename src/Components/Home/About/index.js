@@ -9,7 +9,16 @@ import { Header } from "./Header";
 import { Box, Typography } from "@mui/material";
 import Color from "../../../utils/Color";
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
+  const Router=useRouter()
+  // Add onClick event handler here
+  const handleClick = () => {
+    console.log(`${title} card clicked`);
+    // Perform your desired action on click, for example, navigate to a URL:
+    Router.push(learnMoreLink)
+  };
+
   return (
     <Tilt
       glareEnable
@@ -48,7 +57,9 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               width: "100%", // Line expands to full width on hover
               transition: "width 0.2s ease",
             },
+            cursor: "pointer", // Add cursor pointer for indication
           }}
+          onClick={handleClick} // Add onClick event here
         >
           <Image
             src={icon}
@@ -66,7 +77,6 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               position: "relative", // Required for absolute positioning of the line
             }}
           >
-
             {title}
             {/* The animated line under the title */}
             <Box
@@ -109,9 +119,7 @@ const ServiceCard = ({ index, title, icon, description, learnMoreLink }) => {
               },
             }}
           >
-            <div  underline="none">
-              Learn More
-            </div>
+            <div underline="none">Learn More</div>
           </Typography>
         </Box>
       </motion.div>

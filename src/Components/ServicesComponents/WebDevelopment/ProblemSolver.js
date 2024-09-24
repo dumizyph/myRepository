@@ -1,19 +1,18 @@
 // Import dependencies
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
 import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import SpeedIcon from '@mui/icons-material/Speed';
 import DevicesIcon from '@mui/icons-material/Devices';
 import SearchIcon from '@mui/icons-material/Search';
-import SecurityIcon from '@mui/icons-material/Security';  // For security vulnerabilities
-import AssessmentIcon from '@mui/icons-material/Assessment'; // For high bounce rates
-import DesignServicesIcon from '@mui/icons-material/DesignServices'; //
+import SecurityIcon from '@mui/icons-material/Security';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import Color from '../../../utils/Color';
+import { fadeIn, textVariant } from '../../../utils/motion';
 
 // Data for cards
-
 const data = [
   {
     icon: <SpeedIcon style={{ fontSize: '3rem', color: Color.Green }} />,
@@ -45,18 +44,16 @@ const data = [
     problem: "Outdated design",
     solution: "We modernize your website with a fresh, sleek design that aligns with current trends and your brand identity. Our designers work to create visually appealing layouts, intuitive interfaces, and user-friendly navigation that delivers a positive experience. A modern, responsive design helps build trust with your audience and makes a lasting first impression.",
   },
-]
+];
 
-
-// 3D Component - Rotating Sphere
+// 3D Component - Rotating Sphere (Optional)
 const RotatingSphere = () => {
   const sphereRef = useRef();
 
-  // Use `useFrame` to rotate the sphere on every frame
   useFrame(() => {
     if (sphereRef.current) {
-      sphereRef.current.rotation.y += 0.01; // Rotate slowly on Y-axis
-      sphereRef.current.rotation.x += 0.005; // Optional rotation on X-axis
+      sphereRef.current.rotation.y += 0.01;
+      sphereRef.current.rotation.x += 0.005;
     }
   });
 
@@ -70,74 +67,63 @@ const RotatingSphere = () => {
 
 const ProblemSolutionCards = () => {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        width: '100%',
-        minHeight: '50vh',
-        padding: '20px',
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.25 }}
+      style={{
+        padding: '40px 0',
         backgroundColor: 'white',
-        textAlign: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        overflow: 'hidden',
+        overflow: 'hidden', // Prevent overflow issues
+
       }}
     >
+      {/* 3D Background Animation using react-three-fiber */}
+  
+
       <Box
         sx={{
           width: { xs: '100%', sm: '90%', md: '80%' },
-          maxWidth:1500,
-          padding: '20px',
+          maxWidth: 1500,
+          margin: '0 auto',
           backgroundColor: 'white',
           textAlign: 'center',
           borderRadius: '15px',
+          padding: '40px',
+         
         }}
       >
-        {/* 3D Background Animation using react-three-fiber */}
-        <Canvas
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: -1,
-          }}
-        >
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[5, 5, 5]} />
-          <RotatingSphere />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-          <Stars radius={100} depth={50} count={5000} factor={4} fade />
-        </Canvas>
-
         {/* Main Heading */}
-        <Typography
-          variant="h3"
-          sx={{
-            color: '#333',
-            // fontWeight: 'bold',
-            marginBottom: '20px',
-            fontSize: { xs: '1.8rem', md: '3.5rem' }, // Responsive font size
-          }}
-        >
-          Why Settle for Less? Let's Fix What's Holding You Back
-        </Typography>
+        <motion.div variants={textVariant()}>
+          <Typography
+            variant="h3"
+            sx={{
+              color: '#333',
+              marginBottom: '20px',
+              fontSize: { xs: '1.8rem', md: '3.5rem' },
+            }}
+          >
+            Why Settle for Less? Let's Fix What's Holding You Back
+          </Typography>
+        </motion.div>
 
         {/* Sub Detail */}
+        <motion.div variants={textVariant()}>
+
         <Typography
           variant="h5"
           sx={{
             color: '#555',
             marginBottom: '30px',
-            fontSize: { xs: '1.2rem', md: '1.5rem' }, // Responsive font size
+            fontSize: { xs: '1.2rem', md: '1.5rem' },
           }}
         >
           Common Web Development Challenges We Solve
         </Typography>
-
+        </motion.div>
         {/* Cards */}
+        <motion.div variants={textVariant()}>
+
         <Grid container spacing={3} justifyContent="center">
           {data.map((item, index) => (
             <Grid
@@ -149,20 +135,31 @@ const ProblemSolutionCards = () => {
               sx={{ padding: { xs: '10px', sm: '20px' } }}
             >
               {/* Framer Motion applied to the Card */}
-              <motion.div whileHover="hover" transition={{ duration: 0.3 }}>
+              <motion.div
+                variants={fadeIn("right", "spring", index * 0.5, 0.75)} // Correct fadeIn usage
+                initial="hidden"
+                animate="show"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                style={{ height: '100%' }}
+              >
                 <Card
                   sx={{
                     backgroundColor: '#fff',
                     borderRadius: '15px',
                     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                     padding: '20px',
-                    height: '100%',
+                    transition: 'transform 0.3s ease-in-out',
+                    height: 'auto', // Let the height grow based on content
+                    display: 'flex',
+                    flexDirection: 'column', // Ensure the card grows vertically
+                    overflow: 'visible', // Ensure that all text content is visible
                   }}
                 >
-                  <CardContent sx={{ textAlign: 'center' }}>
+                  <CardContent sx={{ textAlign: 'center', flexGrow: 1 }}>
                     {/* Animated Icon */}
                     <motion.div
-                      variants={{ hover: { rotate: 360 } }}
+                      whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.5, ease: 'easeInOut' }}
                     >
                       {item.icon}
@@ -188,6 +185,9 @@ const ProblemSolutionCards = () => {
                         color: '#777',
                         marginTop: '10px',
                         fontSize: { xs: '0.9rem', md: '1rem' },
+                        overflow: 'visible', // Allow text to fully show
+                        whiteSpace: 'normal', // Wrap text normally
+                        wordWrap: 'break-word', // Ensure words break correctly
                       }}
                     >
                       {item.solution}
@@ -198,8 +198,10 @@ const ProblemSolutionCards = () => {
             </Grid>
           ))}
         </Grid>
+        </motion.div>
+
       </Box>
-    </Box>
+    </motion.section>
   );
 };
 
