@@ -2,12 +2,9 @@
 import { useContext, useRef } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
 import { UserContext } from '../../../Context/UserContext';
-import ProblemSolver from "../../../Components/ServicesComponents/WebDevelopment/ProblemSolver"
-import ParticlesBackground from "../../../Components/ServicesComponents/WebDevelopment/ParticlesBackground"
-import DndustriesWeServe from "../../../Components/ServicesComponents/WebDevelopment/DndustriesWeServe"
+import Components from '../../../Components';
 
 export default function ContactPage() {
-  const videoRef = useRef(null);
   const { Divlocation } = useContext(UserContext);
   return (
 //     <div>
@@ -224,11 +221,12 @@ Crafting Web Solutions, Empowering Digital Growth
 </Box>
 
 </Box>
-<ProblemSolver/>
-{/* <ParticlesBackground> */}
-<DndustriesWeServe/>
+<Components.ServicesComponents.WebDevelopment.ProblemSolver/>
+<Components.ServicesComponents.WebDevelopment.DevelopmentProcessFlow/>
+<Components.ServicesComponents.WebDevelopment.industriesWeSurve/>
 
-{/* </ParticlesBackground> */}
+
+
 </>
 
   );

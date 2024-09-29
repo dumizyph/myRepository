@@ -22,7 +22,7 @@ const stepVariant = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeInOut' } },
 };
 
-const SoftwareDevelopmentProcess = () => {
+const DevelopmentProcessFlow = () => {
   // Ref and inView hook to detect scroll position
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: false }); // triggerOnce: false allows the animation to replay every time the section enters the viewport
@@ -269,4 +269,4 @@ const styles = {
   },
 };
 
-export default SoftwareDevelopmentProcess;
+export default DevelopmentProcessFlow;
