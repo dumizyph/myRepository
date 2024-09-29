@@ -214,7 +214,7 @@ const styles = {
     fontSize: 40,
     color: '#0D2D43',
     '@media (max-width: 600px)': {
-      fontSize: 24, // Adjust icon size on small screens
+      fontSize: 35, // Adjust icon size on small screens
     },
   },
   stepContent: {
