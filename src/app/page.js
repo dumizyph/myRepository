@@ -21,7 +21,6 @@ export default function Home() {
       <div ref={Divlocation} style={{ width: "90%", height: "100%", margin: 0 }}>
         <Components.Home.About />
       </div>
-      <Components.Home.JoinUs />
 
     </main>
   );

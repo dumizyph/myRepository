@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
      </Box>
        </header>
          {children}
-        
+         <Components.Home.JoinUs />
          <Components.Footer.footer />
          </Box>
            </UserProvider> 
