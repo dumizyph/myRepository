@@ -1,19 +1,18 @@
-// Import dependencies
-import React, { useContext, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
-import { motion } from 'framer-motion'; // Import Framer Motion
+import React from "react";
+import Tilt from "react-parallax-tilt";
+import { motion } from "framer-motion";
+import { SectionWrapper } from "../../../hoc";
+import { fadeIn, textVariant } from "../../../utils/motion";
+import { Box, Typography } from "@mui/material";
+import Color from "../../../utils/Color";
 import SpeedIcon from '@mui/icons-material/Speed';
 import DevicesIcon from '@mui/icons-material/Devices';
 import SearchIcon from '@mui/icons-material/Search';
 import SecurityIcon from '@mui/icons-material/Security';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import Color from '../../../utils/Color';
-import { fadeIn, textVariant } from '../../../utils/motion';
-import { UserContext } from '../../../Context/UserContext';
 
-// Data for cards
+// Data array based on the problems and solutions
 const data = [
   {
     icon: <SpeedIcon style={{ fontSize: '3rem', color: Color.Green }} />,
@@ -47,72 +46,109 @@ const data = [
   },
 ];
 
-// 3D Component - Rotating Sphere (Optional)
-const RotatingSphere = () => {
-  const sphereRef = useRef();
-
-  useFrame(() => {
-    if (sphereRef.current) {
-      sphereRef.current.rotation.y += 0.01;
-      sphereRef.current.rotation.x += 0.005;
-    }
-  });
-
+// Service Card Component
+const ServiceCard = ({ index,icon, problem, solution }) => {
   return (
-    <mesh ref={sphereRef} position={[0, 0, 0]}>
-      <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial color={'red'} />
-    </mesh>
+    <div
+     
+      style={{
+        width: "100%",
+        maxWidth: "350px",
+        borderRadius: "20px",
+      }}
+    >
+      <motion.div
+        variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+        style={{
+          borderRadius: "20px",
+          padding: "1px",
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <Box
+          sx={{
+            minHeight: "300px", // Allow card to expand based on content
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            borderRadius: "20px",
+            padding: "20px",
+            "&:hover h6": {
+              color: "#A3CB38",
+              transitionDelay: "0.2s",
+            },
+          }}
+        >
+          {/* Display the Icon */}
+          {icon}
+
+          {/* Display the Problem */}
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{
+              color: Color.Blue,
+              fontSize: "20px",
+              fontWeight: "bold",
+              transition: "color 0.2s ease",
+              position: "relative",
+            }}
+          >
+            {problem}
+          </Typography>
+
+          {/* Display the Solution */}
+          <Typography
+            variant="body2"
+            align="center"
+            sx={{
+              color: "#666",
+              fontSize: "14px",
+              marginTop: "10px",
+              // Ensure the text wraps and the box can expand
+              whiteSpace: "normal",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {solution}
+          </Typography>
+        </Box>
+      </motion.div>
+    </div>
   );
 };
 
-const ProblemSolutionCards = () => {
-  const { Divlocation } = useContext(UserContext);
+const About = () => {
   return (
-    <motion.section
-    ref={Divlocation}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.25 }}
-      style={{
-        padding: '40px 0',
-        backgroundColor: 'white',
-        overflow: 'hidden', // Prevent overflow issues
+    <div style={{ backgroundColor: "white", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+      <motion.div variants={textVariant()}>
+        <Typography
+          variant="h3"
+          sx={{
+            color: '#333',
+            marginBottom: '20px',
+            fontSize: { xs: '1.8rem', md: '3.5rem' },
+          }}
+        >
+          Why Settle for Less? Let's Fix What's Holding You Back
+        </Typography>
+      </motion.div>
 
-      }}
-    >
-      {/* 3D Background Animation using react-three-fiber */}
-  
-
-      <Box
-        sx={{
-          width: { xs: '100%', sm: '90%', md: '80%' },
-          maxWidth: 1500,
-          margin: '0 auto',
-          backgroundColor: 'white',
-          textAlign: 'center',
-          borderRadius: '15px',
-          padding: '40px',
-         
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        style={{
+          color: "gray",
+          marginTop: "16px",
+          maxWidth: "600px",
+          fontSize: "17px",
+          lineHeight: "30px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
         }}
       >
-        {/* Main Heading */}
-        <motion.div variants={textVariant()}>
-          <Typography
-            variant="h3"
-            sx={{
-              color: '#333',
-              marginBottom: '20px',
-              fontSize: { xs: '1.8rem', md: '3.5rem' },
-            }}
-          >
-            Why Settle for Less? Let's Fix What's Holding You Back
-          </Typography>
-        </motion.div>
-
-        {/* Sub Detail */}
-        <motion.div variants={textVariant()}>
-
         <Typography
           variant="h5"
           sx={{
@@ -123,89 +159,29 @@ const ProblemSolutionCards = () => {
         >
           Common Web Development Challenges We Solve
         </Typography>
-        </motion.div>
-        {/* Cards */}
-        <motion.div variants={textVariant()}>
+      </motion.p>
 
-        <Grid container spacing={3} justifyContent="center">
-          {data.map((item, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              key={index}
-              sx={{ padding: { xs: '10px', sm: '20px' } }}
-            >
-              {/* Framer Motion applied to the Card */}
-              <motion.div
-                variants={fadeIn("right", "spring", index * 0.5, 0.75)} // Correct fadeIn usage
-                initial="hidden"
-                animate="show"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                style={{ height: '100%' }}
-              >
-                <Card
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: '15px',
-                    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-                    padding: '20px',
-                    transition: 'transform 0.3s ease-in-out',
-                    height: 'auto', // Let the height grow based on content
-                    display: 'flex',
-                    flexDirection: 'column', // Ensure the card grows vertically
-                    overflow: 'visible', // Ensure that all text content is visible
-                  }}
-                >
-                  <CardContent sx={{ textAlign: 'center', flexGrow: 1 }}>
-                    {/* Animated Icon */}
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5, ease: 'easeInOut' }}
-                    >
-                      {item.icon}
-                    </motion.div>
-
-                    {/* Problem */}
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 'bold',
-                        color: '#333',
-                        marginTop: '20px',
-                        fontSize: { xs: '1.2rem', md: '1.5rem' },
-                      }}
-                    >
-                      {item.problem}
-                    </Typography>
-
-                    {/* Solution */}
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#777',
-                        marginTop: '10px',
-                        fontSize: { xs: '0.9rem', md: '1rem' },
-                        overflow: 'visible', // Allow text to fully show
-                        whiteSpace: 'normal', // Wrap text normally
-                        wordWrap: 'break-word', // Ensure words break correctly
-                      }}
-                    >
-                      {item.solution}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-        </motion.div>
-
+      <Box
+        sx={{
+         
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "40px",
+          justifyContent: { xs: "center", sm: "flex-start" },
+          width: "80%",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: 15,
+          
+        }}
+      >
+        {/* Map over the data array and pass data to the ServiceCard */}
+        {data.map((service, index) => (
+          <ServiceCard key={index} index={index} {...service} />
+        ))}
       </Box>
-    </motion.section>
+    </div>
   );
 };
 
-export default ProblemSolutionCards;
+export default SectionWrapper(About, "about");

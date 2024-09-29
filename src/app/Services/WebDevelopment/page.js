@@ -3,6 +3,9 @@ import { useContext, useRef } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
 import { UserContext } from '../../../Context/UserContext';
 import ProblemSolver from "../../../Components/ServicesComponents/WebDevelopment/ProblemSolver"
+import ParticlesBackground from "../../../Components/ServicesComponents/WebDevelopment/ParticlesBackground"
+import DndustriesWeServe from "../../../Components/ServicesComponents/WebDevelopment/DndustriesWeServe"
+
 export default function ContactPage() {
   const videoRef = useRef(null);
   const { Divlocation } = useContext(UserContext);
@@ -222,6 +225,10 @@ Crafting Web Solutions, Empowering Digital Growth
 
 </Box>
 <ProblemSolver/>
+{/* <ParticlesBackground> */}
+<DndustriesWeServe/>
+
+{/* </ParticlesBackground> */}
 </>
 
   );
