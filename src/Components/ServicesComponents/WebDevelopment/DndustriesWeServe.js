@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { motion, useInView } from 'framer-motion';
 import PlanningIcon from '@mui/icons-material/Lightbulb';
@@ -26,6 +26,24 @@ const SoftwareDevelopmentProcess = () => {
   // Ref and inView hook to detect scroll position
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: false }); // triggerOnce: false allows the animation to replay every time the section enters the viewport
+
+  // Use useEffect to safely access document and append the style on the client side only
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Cleanup: remove the style element when the component unmounts
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   return (
     <Container maxWidth={false} disableGutters sx={styles.container}>
@@ -139,12 +157,11 @@ const styles = {
     padding: '20px 20px',
     borderRadius: '16px',
     background: 'linear-gradient(45deg, #0D2D43 60%, rgba(255, 255, 255, 0.2) 100%)',
-    display:"flex",
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '16px',
     flexDirection: 'column',
-  
     backgroundSize: '400% 400%',
     animation: 'gradientAnimation 15s ease infinite',
     '@media (max-width: 600px)': {
@@ -162,9 +179,7 @@ const styles = {
   },
   chartContainer: {
     position: 'relative',
-    // maxWidth: '500px',
-    width:"70%",
-    // paddingLeft: '80px',
+    width: '70%',
     '@media (max-width: 5000px)': {
       paddingLeft: '100px',
     },
@@ -240,16 +255,5 @@ const styles = {
     },
   },
 };
-
-// Add the keyframe for the gradient animation
-const style = document.createElement('style');
-style.innerHTML = `
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-`;
-document.head.appendChild(style);
 
 export default SoftwareDevelopmentProcess;
