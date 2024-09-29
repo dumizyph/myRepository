@@ -179,7 +179,7 @@ const styles = {
   },
   chartContainer: {
     position: 'relative',
-    width: '70%',
+    maxWidth:"800px",
     '@media (max-width: 5000px)': {
       paddingLeft: '100px',
     },
@@ -246,11 +246,10 @@ const styles = {
     top: '80px',
     left: '40px',
     width: '4px',
-    height: '125px',
+    height: '137%',
     backgroundColor: '#A3CB38',
     borderRadius: '50px',
     '@media (max-width: 600px)': {
-      height: '160px', // Adjust height for smaller screens
       top: '79px',
     },
   },
