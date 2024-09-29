@@ -51,6 +51,11 @@ const SoftwareDevelopmentProcess = () => {
         Code that Breathes Life into Ideas
       </Typography>
 
+      {/* Sub-detail below the main heading */}
+      <Typography variant="body1" component="p" align="center" sx={styles.subDetail}>
+        A step-by-step process to turn your vision into reality with precision and clarity.
+      </Typography>
+
       <motion.div
         ref={ref} // Attach ref to trigger when it comes into view
         variants={staggerContainer}
@@ -170,11 +175,20 @@ const styles = {
   },
   title: {
     color: '#ffffff',
-    marginBottom: '60px',
+    marginBottom: '20px',
     fontSize: '80px',
     '@media (max-width: 600px)': {
       fontSize: '40px', // Adjust title size on small screens but keep alignment
-      marginBottom: '40px',
+      marginBottom: '20px',
+    },
+  },
+  subDetail: {
+    color: '#B0D4E3',
+    marginBottom: '40px',
+    fontSize: '18px',
+    '@media (max-width: 600px)': {
+      fontSize: '14px', // Adjust font size on small screens
+      marginBottom: '30px',
     },
   },
   chartContainer: {
