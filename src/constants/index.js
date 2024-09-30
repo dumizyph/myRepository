@@ -56,6 +56,7 @@ const services = [
     title: "Web Development",
     icon: webdev,
     description: "We build fast, secure, and responsive websites using modern technologies.",
+    learnMoreLink:"/Services/WebDevelopment"
   },
   {
     title: "Mobile Development",
