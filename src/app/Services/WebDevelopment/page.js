@@ -161,66 +161,149 @@ export default function ContactPage() {
 
 <>
 <Box
-sx={{
-  position: 'relative',
-  minHeight: '100vh',
-height:"auto",
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  textAlign: 'center',
-  overflow: 'hidden', // Ensure no overflow
-}}
->
-{/* Background Div */}
-<Box
   sx={{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-          backgroundImage: 'url("/images/pexels-nickoloui-2473183.jpg")', // Replace with the actual image URL
-      backgroundSize: 'cover', // Ensure the image covers the entire area
-
+    position: 'relative',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
-    height: '50%',
-    // backgroundColor: 'black',
-    zIndex: 0,
+    padding: { xs: '20px', md: '40px' },
+    color: 'white',
+    overflow: 'hidden',
+    zIndex: 1,
   }}
-/>
-
-{/* Text Overlay */}
-<Box
- sx={{
-  
-      padding: { xs: '16px', md: '64px' }, // Responsive padding
-      width: { xs: '90%', md: '80%' }, // Responsive width
-      maxWidth: '1200px', // Max width to prevent overflow
-
- }}
 >
-<Typography
+  {/* Darker Animated Gradient Background */}
+  <Box
+    sx={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(-45deg, #02060A, #09121A, #0D2D43, #051017)', // Darker shades
+      backgroundSize: '400% 400%',
+      animation: 'gradientAnimation 15s ease infinite',
+      zIndex: 0,
+      opacity: 0.9, // Darker effect with less transparency
+    }}
+  />
+
+  {/* Fused Background Image */}
+  <Box
+    sx={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundImage: 'url("/images/pexels-pixabay-161154.jpg")', // Replace with your image path
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      opacity: 0.25, // Further reduced opacity for more prominence of the gradient
+      zIndex: 1,
+      mixBlendMode: 'overlay', // Blend mode for the image fusion
+    }}
+  />
+
+  {/* CSS Animation Keyframes */}
+  <style jsx global>{`
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  `}</style>
+
+  {/* Content Area */}
+  <Box
+    sx={{
+      position: 'relative',
+      zIndex: 2,
+      textAlign: 'left',
+      maxWidth: '800px',
+      px: { xs: '24px', md: '48px' },
+      py: { xs: '32px', md: '64px' },
+    }}
+  >
+    {/* Small Heading */}
+    <Typography
+      component="h5"
       sx={{
-        fontSize: { xs: '2.5rem', md: '4rem', lg: '5.5rem' }, // Responsive large font size
-        lineHeight: { xs: '3rem', md: '5rem', lg: '6.5rem' }, // Responsive line height for readability
-        position: 'relative',
-        zIndex: 1,
-        background: "linear-gradient(to bottom, white 50%, black 50%)", // Gradient effect for text color
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent', // Fills the text with gradient
-        width: '100%',
-        display: 'inline-block',
-        textAlign: 'left',
-        whiteSpace: 'normal', // Ensure text wraps normally instead of breaking
-        wordBreak: 'break-word', // Prevent long words from breaking awkwardly
+        fontSize: { xs: '1.2rem', md: '1.5rem' },
+        fontWeight: '300',
+        color: '#A3CB38', // Updated color to green
+        letterSpacing: '0.05rem',
+        mb: { xs: 2, md: 3 },
       }}
->
-Crafting Web Solutions, Empowering Digital Growth
-</Typography>
+    >
+      Empowering Your Business
+    </Typography>
 
+    {/* Large Heading */}
+    <Typography
+      component="h1"
+      sx={{
+        fontSize: { xs: '3rem', md: '5rem' },
+        color: 'white',
+        letterSpacing: '0.1rem',
+        mb: { xs: 3, md: 4 },
+        lineHeight: '1.2',
+      }}
+    >
+      Crafting Web Solutions for Tomorrow
+    </Typography>
+
+    {/* Detailed Description */}
+    <Typography
+      component="p"
+      sx={{
+        fontSize: { xs: '1rem', md: '1.2rem' },
+        color: '#ddd',
+        lineHeight: '1.6',
+        maxWidth: '600px',
+        mb: 4,
+      }}
+    >
+      We create innovative and scalable web solutions designed to empower your business. Whether you're looking to enhance your digital presence or streamline your business processes, our team delivers top-notch services that drive growth and success.
+    </Typography>
+
+    {/* Call to Action Button */}
+    <Button
+      variant="contained"
+      sx={{
+        backgroundColor: '#A3CB38', // Updated button color to green
+        color: '#1a1a1a',
+        fontSize: { xs: '1rem', md: '1.2rem' },
+        padding: { xs: '10px 20px', md: '12px 30px' },
+        borderRadius: '25px',
+        boxShadow: '0 4px 12px rgba(163, 203, 56, 0.3)', // Updated box shadow to match green shade
+        '&:hover': {
+          backgroundColor: '#8BBE31', // Slightly darker green for hover effect
+        },
+      }}
+    >
+      Discover More
+    </Button>
+  </Box>
 </Box>
 
-</Box>
+
+
+
+
+
+
+
+
+
 <Components.ServicesComponents.WebDevelopment.ProblemSolver/>
 <Components.ServicesComponents.WebDevelopment.DevelopmentProcessFlow/>
 <Components.ServicesComponents.WebDevelopment.industriesWeSurve/>
