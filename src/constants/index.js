@@ -62,6 +62,8 @@ const services = [
     title: "Mobile Development",
     icon: mobiledev,
     description: "We create engaging mobile apps for iOS and Android platforms.",
+    learnMoreLink:"/Services/MobileAppDevelopment"
+
   },
   {
     title: "Cloud Solutions",

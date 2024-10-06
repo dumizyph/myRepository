@@ -1,5 +1,7 @@
 import WebDevelopment from "./WebDevelopment";
+import HeroSection from "./HeroSection";
 const ServicesComponents={
-     WebDevelopment
+     WebDevelopment,
+     HeroSection
 }
 export default ServicesComponents;
