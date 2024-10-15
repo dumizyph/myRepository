@@ -69,6 +69,8 @@ const services = [
     title: "Cloud Solutions",
     icon: clouddev,
     description: "We offer scalable and secure cloud solutions for your business needs.",
+    learnMoreLink:"/Services/CloudSolutions"
+
   },
   {
     title: "UI/UX Designing",
