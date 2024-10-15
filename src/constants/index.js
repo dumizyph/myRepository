@@ -76,6 +76,7 @@ const services = [
     title: "UI/UX Designing",
     icon: UIUXdev,
     description: "We design intuitive and user-friendly interfaces for a seamless experience.",
+    learnMoreLink:"/Services/Ui-UxDesigns"
   },
   {
     title: "Custom Software Development",
