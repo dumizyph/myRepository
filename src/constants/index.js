@@ -82,6 +82,7 @@ const services = [
     title: "Custom Software Development",
     icon: customSoftwareDev, // Ensure this icon is properly set in your assets
     description: "We develop bespoke software solutions focused on scalability, security, and performance to meet specific business needs.",
+    learnMoreLink:"/Services/CustomSoftwares"
   },
 ];
 
