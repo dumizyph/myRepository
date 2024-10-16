@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect, useContext } from 'react';
-import { Button, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Button } from '@mui/material';
 import Components from '..';
 import styles from './Header.module.css';
 import { UserContext } from '../../Context/UserContext';
-import CustomDrawer from './CustomDrawer';
 import { useRouter } from 'next/navigation';
 import MotionFramerDrawer from './MotionFramerDrawer';
 import { useCycle } from 'framer-motion';
+import ServicesDropdown from './ServicesDropdown'; // Import the ServicesDropdown component
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -89,7 +88,9 @@ export default function Header() {
             <ul>
               <li><a href="#home" className={isScrolled ? styles.scrolledLink : ''}>Home</a></li>
               <li><a href="#about" className={isScrolled ? styles.scrolledLink : ''}>About</a></li>
-              <li><a href="#services" className={isScrolled ? styles.scrolledLink : ''}>Services</a></li>
+              <li>
+                <ServicesDropdown /> {/* Call the ServicesDropdown component */}
+              </li>
               <li><a href="#contact" className={isScrolled ? styles.scrolledLink : ''}>Contact</a></li>
             </ul>
             <Button
@@ -101,10 +102,6 @@ export default function Header() {
               Get in touch
             </Button>
           </nav>
-
-          {/* <IconButton aria-label="menu" onClick={() => setIsDrawerOpen(true)} className={styles.burger}>
-            <MenuIcon style={{ color: isScrolled ? 'black' : 'white' }} />
-          </IconButton> */}
 
         </div>
       </div>

@@ -69,16 +69,20 @@ const services = [
     title: "Cloud Solutions",
     icon: clouddev,
     description: "We offer scalable and secure cloud solutions for your business needs.",
+    learnMoreLink:"/Services/CloudSolutions"
+
   },
   {
     title: "UI/UX Designing",
     icon: UIUXdev,
     description: "We design intuitive and user-friendly interfaces for a seamless experience.",
+    learnMoreLink:"/Services/Ui-UxDesigns"
   },
   {
     title: "Custom Software Development",
     icon: customSoftwareDev, // Ensure this icon is properly set in your assets
     description: "We develop bespoke software solutions focused on scalability, security, and performance to meet specific business needs.",
+    learnMoreLink:"/Services/CustomSoftwares"
   },
 ];
 
