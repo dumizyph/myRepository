@@ -17,7 +17,7 @@ export default function Home() {
 
       {/* Video background with centered content */}
       <Components.Home.SliderSection/>
-    
+    test
       <div ref={Divlocation} style={{ width: "90%", height: "100%", margin: 0 }}>
         <Components.Home.About />
       </div>
